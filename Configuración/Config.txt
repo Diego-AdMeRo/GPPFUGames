@@ -1,0 +1,93 @@
+-- ...................BASE DE DATOS...................
+-- Nombre Base de Datos: UGamesDB
+-- Usuario: UGamesDB
+-- Contraseña: UGamesDB
+------------------------------Servidor-----------------------------
+-- nombre del pool: UGamesPool
+-- tipo de datos: javax.sql.DataSource
+-- Base de Datos: JavaDB
+
+-- Resource: jdbc/UGamesDB
+-- PoolName: UGamesDB
+-------------------------Unidad de Persistencia------------------
+-- jdbc/UGamesDB
+-- ...................BASE DE DATOS...................
+
+
+
+CREATE TABLE ubicacion (
+codigoPostal varchar(10) NOT NULL PRIMARY KEY,
+departamento varchar(50) NOT NULL,
+localidad varchar(50) NOT NULL,
+ciudad varchar(50) NOT NULL
+);
+
+CREATE TABLE usuario(
+email varchar(340) NOT NULL PRIMARY KEY,
+codigoPostal varchar(10) NOT NULL,
+constraseña varchar(25) NOT NULL,
+direccion varchar(30),
+FOREIGN KEY (codigoPostal) REFERENCES ubicacion(codigoPostal)
+);
+
+CREATE TABLE comprador(
+docIdentidad varchar(50) NOT NULL PRIMARY KEY,
+email varchar(340) NOT NULL,
+nombre varchar(100) NOT NULL,
+apellido varchar(100) NOT NULL,
+telefono varchar(10),
+FOREIGN KEY (email) REFERENCES usuario(email)
+);
+
+CREATE TABLE tienda(
+nit varchar(100) NOT NULL PRIMARY KEY,
+email varchar(340) NOT NULL,
+nombre varchar(100) NOT NULL,
+FOREIGN KEY (email) REFERENCES usuario(email)
+);
+
+CREATE TABLE plataforma(
+idPlataforma varchar(4) NOT NULL PRIMARY KEY,
+tipoPlataforma varchar(30) NOT NULL
+);
+
+CREATE TABLE genero(
+idGenero varchar(4) NOT NULL PRIMARY KEY,
+descripcion varchar(100) NOT NULL
+);
+
+CREATE TABLE juego(
+idJuego varchar (100) NOT NULL PRIMARY KEY,
+nit varchar(100) NOT NULL,
+idPlataforma varchar(4) NOT NULL,
+idGenero varchar(4) NOT NULL,
+nombre varchar(50) NOT NULL,
+descripcion varchar(500) NOT NULL,
+imagen varchar(100) NOT NULL,
+precio double NOT NULL,
+FOREIGN KEY (nit) REFERENCES tienda(nit),
+FOREIGN KEY (idPlataforma) REFERENCES plataforma(idPlataforma),
+FOREIGN KEY (idGenero) REFERENCES genero(idGenero)
+);
+
+CREATE TABLE valoracion(
+idValoracion varchar(100) NOT NULL PRIMARY KEY,
+idJuego varchar(100) NOT NULL,
+comentario varchar(300) NOT NULL,
+calificacion varchar(1) NOT NULL,
+fecha varchar(30),
+FOREIGN KEY (idJuego) REFERENCES juego(idJuego)
+);
+
+CREATE TABLE factura(
+idFactura varchar(100) NOT NULL PRIMARY KEY,
+idJuego varchar(100) NOT NULL,
+docIdentidad varchar(50) NOT NULL,
+tipoDocumento varchar(4) NOT NULL,
+cantidad int NOT NULL,
+fecha varchar(30) NOT NULL,
+tipoDeFactura varchar (20) NOT NULL,
+FOREIGN KEY (idJuego) REFERENCES juego(idJuego),
+FOREIGN KEY (docIdentidad) REFERENCES comprador(docIdentidad),
+FOREIGN KEY (tipoDocumento) REFERENCES comprador(tipoDocumento),
+);
