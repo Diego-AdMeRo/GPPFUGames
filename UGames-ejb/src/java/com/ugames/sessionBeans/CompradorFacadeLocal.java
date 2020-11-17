@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface CompradorFacadeLocal {
 
-    void create(Comprador comprador);
+    public void create(Comprador comprador);
 
-    void edit(Comprador comprador);
+    public void edit(Comprador comprador);
 
-    void remove(Comprador comprador);
+    public void remove(String comprador);
 
-    Comprador find(Object id);
+    public Comprador find(String comprador);
 
-    List<Comprador> findAll();
+    public List<Comprador> findAll();
 
-    List<Comprador> findRange(int[] range);
+    public List<Comprador> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Comprador getComprador (String comprador);
     
 }

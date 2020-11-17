@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface GeneroFacadeLocal {
 
-    void create(Genero genero);
+    public void create(Genero genero);
 
-    void edit(Genero genero);
+    public void edit(Genero genero);
 
-    void remove(Genero genero);
+    public void remove(String genero);
 
-    Genero find(Object id);
+    public Genero find(String genero);
 
-    List<Genero> findAll();
+    public List<Genero> findAll();
 
-    List<Genero> findRange(int[] range);
+    public List<Genero> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Genero getGenero (String genero);
     
 }

@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface FacturaFacadeLocal {
 
-    void create(Factura factura);
+    public void create(Factura factura);
 
-    void edit(Factura factura);
+    public void edit(Factura factura);
 
-    void remove(Factura factura);
+    public void remove(String factura);
 
-    Factura find(Object id);
+    public Factura find(String factura);
 
-    List<Factura> findAll();
+    public List<Factura> findAll();
 
-    List<Factura> findRange(int[] range);
+    public List<Factura> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Factura getFactura (String factura);
     
 }

@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface TiendaFacadeLocal {
 
-    void create(Tienda tienda);
+    public void create(Tienda tienda);
 
-    void edit(Tienda tienda);
+    public void edit(Tienda tienda);
 
-    void remove(Tienda tienda);
+    public void remove(String tienda);
 
-    Tienda find(Object id);
+    public Tienda find(String tienda);
 
-    List<Tienda> findAll();
+    public List<Tienda> findAll();
 
-    List<Tienda> findRange(int[] range);
+    public List<Tienda> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Tienda getComprador (String tienda);
     
 }

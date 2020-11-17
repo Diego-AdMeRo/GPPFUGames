@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface PlataformaFacadeLocal {
 
-    void create(Plataforma plataforma);
+    public void create(Plataforma plataforma);
 
-    void edit(Plataforma plataforma);
+    public void edit(Plataforma plataforma);
 
-    void remove(Plataforma plataforma);
+    public void remove(String plaforma);
 
-    Plataforma find(Object id);
+    public Plataforma find(String plataforma);
 
-    List<Plataforma> findAll();
+    public List<Plataforma> findAll();
 
-    List<Plataforma> findRange(int[] range);
+    public List<Plataforma> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Plataforma getPlataforma (String plataforma);
     
 }

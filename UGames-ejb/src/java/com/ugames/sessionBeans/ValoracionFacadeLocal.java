@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface ValoracionFacadeLocal {
 
-    void create(Valoracion valoracion);
+    public void create(Valoracion valoracion);
 
-    void edit(Valoracion valoracion);
+    public void edit(Valoracion valoracion);
 
-    void remove(Valoracion valoracion);
+    public void remove(String valoracion);
 
-    Valoracion find(Object id);
+    public Valoracion find(String valoracion);
 
-    List<Valoracion> findAll();
+    public List<Valoracion> findAll();
 
-    List<Valoracion> findRange(int[] range);
+    public List<Valoracion> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Valoracion getValoracion (String valoracion);
     
 }

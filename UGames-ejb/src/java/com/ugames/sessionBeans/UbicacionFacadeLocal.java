@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface UbicacionFacadeLocal {
 
-    void create(Ubicacion ubicacion);
+     public void create(Ubicacion ubicacion);
 
-    void edit(Ubicacion ubicacion);
+    public void edit(Ubicacion ubicacion);
 
-    void remove(Ubicacion ubicacion);
+    public void remove(String ubicacion);
 
-    Ubicacion find(Object id);
+    public Ubicacion find(String ubicacion);
 
-    List<Ubicacion> findAll();
+    public List<Ubicacion> findAll();
 
-    List<Ubicacion> findRange(int[] range);
+    public List<Ubicacion> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Ubicacion getUbicacion (String ubicacion);
     
 }

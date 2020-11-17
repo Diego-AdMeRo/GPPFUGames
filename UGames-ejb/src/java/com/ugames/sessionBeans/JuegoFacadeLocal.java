@@ -16,18 +16,20 @@ import javax.ejb.Local;
 @Local
 public interface JuegoFacadeLocal {
 
-    void create(Juego juego);
+     public void create(Juego juego);
 
-    void edit(Juego juego);
+    public void edit(Juego juego);
 
-    void remove(Juego juego);
+    public void remove(String juego);
 
-    Juego find(Object id);
+    public Juego find(String juego);
 
-    List<Juego> findAll();
+    public List<Juego> findAll();
 
-    List<Juego> findRange(int[] range);
+    public List<Juego> findRange(int[] range);
 
-    int count();
+    public int count();
+    
+    public Juego getJuego (String juego);
     
 }
